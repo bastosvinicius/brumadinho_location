@@ -1,0 +1,12 @@
+version: '3'
+services:
+        web:
+                image: nginx
+                volumes:
+                        ../:/usr/local/nginx/html
+                networks:
+                        - brumadinho-network
+
+        networks:
+        brumadinho-network
+                driver: bridge
