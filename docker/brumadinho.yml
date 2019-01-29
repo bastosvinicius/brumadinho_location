@@ -1,12 +1,14 @@
 version: '3'
 services:
-        web:
-                image: nginx
+        nginx:
+                build:
+                        dockerfile: ./Dockerfile
+                        context: .
+                image: bastosv/web-brumadinho
+                container_name: web-brumadinho
+                ports:
+                        - "8000:80"
                 volumes:
-                        ../:/usr/local/nginx/html
-                networks:
-                        - brumadinho-network
-
-        networks:
-        brumadinho-network
-                driver: bridge
+                        - ..://usr/local/share/html/
+                command:
+                        - /usr/bin/nginx -g daemon off;
